@@ -1,14 +1,34 @@
-# Compiled class file
+HELP.md
+target/
+logs/
 *.class
 
 # Log file
 *.log
 
-# BlueJ files
-*.ctxt
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+/build/
+
 
 # Package Files #
 *.jar
