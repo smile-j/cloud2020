@@ -1,0 +1,16 @@
+server:
+  port: 6001
+spring:
+  application:
+    name: star-springboot
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot
+    username: root
+    password: root
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.dong.springcloud.entity
+logging:
+  level:
+    org.dong.springcloud: debug

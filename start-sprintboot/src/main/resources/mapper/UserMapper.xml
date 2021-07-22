@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.dong.springcloud.dao.UserDao">
+
+    <resultMap id="baseResultMap" type="com.dong.springcloud.entity.UserEntity">
+        <id column="id" property="id"/>
+        <result column="user_name" property="userName" />
+        <result column="address" property="address" />
+        <result column="pwd" property="pwd" />
+        <result column="age" property="age" />
+        <result column="born" property="born" />
+        <result column="flag" property="flag" />
+    </resultMap>
+
+    <sql id="baseColumns">
+        id,user_name,pwd,address,age,born,flag
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into user(user_name,pwd,address,born,age,flag)
+        values (#{userName},#{pwd},#{address},#{born},#{age},#{flag})
+    </insert>
+    <insert id="batchUsers" parameterType="java.lang.reflect.Array">
+        insert into user(user_name,pwd,address,age,born,flag)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            <trim prefix="(" suffix=")" suffixOverrides="," >
+                #{item.userName},
+                #{item.pwd},
+                #{item.address},
+                #{item.age},
+                #{item.born},
+                #{item.flag}
+            </trim>
+        </foreach>
+    </insert>
+    <select id="findUsers" resultMap="baseResultMap" parameterType="com.dong.springcloud.vo.req.UserVo">
+        select <include refid="baseColumns"/> from user where 1=1
+            <if test="userName!=null and userName!='' ">
+                and user_name = #{userName}
+            </if>
+            <if test="pwd!=null and pwd!='' ">
+                and pwd = #{pwd}
+            </if>
+            <if test="address!=null and address!='' ">
+                and address = #{address}
+            </if>
+            <if test="add!=null">
+                and age =#{age}
+            </if>
+            <if test="flag!=null">
+                and flag = #{flag}
+            </if>
+            <if test="startTime!=null and endTime!=null ">
+                and born between startTime and endTime
+            </if>
+    </select>
+
+    <delete id="delUser">
+        delete from user where flag = #{flag}
+    </delete>
+</mapper>
