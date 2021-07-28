@@ -2,7 +2,7 @@ package com.dong.springcloud.comm.enums;
 
 /**
  * @author dongjunpeng
- * @Description
+ * @Description 服务编码
  * @date 2021/7/21
  */
 public enum ServiceStatus {

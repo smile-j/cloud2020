@@ -12,11 +12,11 @@ import com.dong.springcloud.service.IUserService;
 import com.dong.springcloud.vo.req.UserVo;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import jdk.nashorn.api.scripting.JSObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -33,11 +33,17 @@ public class UserServiceImpl extends BaseApiService implements IUserService{
     private UserDao userDao;
     @Autowired
     private ApplicationEventPublisher applicationEventPublisher;
+    @Autowired
+    private AsyncTaskService taskService;
 
     @Override
+    @Transactional
     public Response<UserEntity> insertOne(UserEntity user) {
-        userDao.insert(user);
+//        userDao.insert(user);
+        taskService.testAsyn(user);
         applicationEventPublisher.publishEvent(JSON.toJSONString(user));
+        int a = 10/0;
+
         return ok(user);
     }
 

@@ -38,16 +38,20 @@ public class UserController {
 
     }
 
+    @ApiOperation("post-batchSave")
     @PostMapping("/batchSave")
     public Response<Integer> saveUsers(@RequestBody List<UserEntity> users){
         return userService.batchUsers(users);
     }
 
+    @ApiOperation("post-searchUser")
     @PostMapping("/searchUser")
     public PageResponse<List<UserEntity>> getUsers(@RequestBody PageRequest<UserVo> reqData){
         return userService.findUsers(reqData);
     }
 
+    @ApiOperation("post-delUser")
+    @PostMapping("/delUser")
     public Response<Integer> delUser(@RequestBody UserEntity user){
         return userService.delUser(user);
     }
