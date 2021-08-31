@@ -3,6 +3,7 @@ package com.dong.springcloud.service;
 import com.dong.springcloud.comm.IResultCode;
 import com.dong.springcloud.comm.rep.PageResponse;
 import com.dong.springcloud.comm.rep.Response;
+import com.dong.springcloud.entity.UserEntity;
 
 /**
  * @author dongjunpeng
@@ -14,6 +15,7 @@ public abstract class  BaseApiService {
     protected <T> Response<T> ok(T data) {
         return Response.ok(data);
     }
+
 
    /* protected <T> Response<T> fail(IResultCode resultCode) {
         return Response.fail(resultCode);

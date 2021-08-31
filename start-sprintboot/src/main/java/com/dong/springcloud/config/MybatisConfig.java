@@ -14,7 +14,10 @@ import java.util.Properties;
 @Configuration
 public class MybatisConfig {
 
-    @Bean
+    /**
+     * pagehelper 4.版本的配置
+     */
+    /*@Bean
     public PageHelper pageHelper(){
         PageHelper pageHelper = new PageHelper();
         Properties properties = new Properties();
@@ -24,6 +27,6 @@ public class MybatisConfig {
         //properties.setProperty("dialect","mysql");    //配置mysql数据库的方言
         pageHelper.setProperties(properties);
         return pageHelper;
-    }
+    }*/
 
 }

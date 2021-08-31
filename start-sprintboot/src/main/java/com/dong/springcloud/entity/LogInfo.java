@@ -1,7 +1,10 @@
 package com.dong.springcloud.entity;
 
-import com.sun.org.apache.xpath.internal.operations.String;
+import lombok.Builder;
 import lombok.Data;
+
+import java.util.Date;
+
 
 /**
  * @author dongjunpeng
@@ -9,10 +12,12 @@ import lombok.Data;
  * @date 2021/7/26
  */
 @Data
+//@Accessors(chain = true)
+@Builder
 public class LogInfo {
 
     private String type;
     private String info;
-    private Data curTime;
+    private Date curTime;
 
 }

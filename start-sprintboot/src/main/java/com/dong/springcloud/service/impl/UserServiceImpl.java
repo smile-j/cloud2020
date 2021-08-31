@@ -57,7 +57,9 @@ public class UserServiceImpl extends BaseApiService implements IUserService{
     public PageResponse<List<UserEntity>> findUsers(PageRequest<UserVo> reqData) {
         Page<UserEntity> page = PageHelper.startPage(reqData.getPageInfo().getPageNum(), reqData.getPageInfo().getPageSize());
         userDao.findUsers(reqData.getData());
+        page.close();
         return PageResponse.page(page.getResult(),page.getTotal());
+//        return PageResponse.page(page.getResult(),page.getTotal());
 
 
     }
@@ -65,5 +67,9 @@ public class UserServiceImpl extends BaseApiService implements IUserService{
     @Override
     public Response<Integer> delUser(UserEntity user) {
         return userDao.delUser(user);
+    }
+
+    public Response<UserEntity> getUserById(String id) {
+        return ok(UserEntity.builder().userName(id).build());
     }
 }

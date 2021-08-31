@@ -26,10 +26,16 @@ public class AsyncTaskService {
     @SneakyThrows
     @Async
     public void testAsyn(UserEntity userEntity) {
-        System.out.println("------222222--------------");
+        log.info("------222222--------------");
         TimeUnit.SECONDS.sleep(5);
-        System.out.println("-----------3333---------");
+        log.info("-----------3333---------");
         userDao.insert(userEntity);
+    }
+    @Async
+    public void testThreadPool() throws InterruptedException {
+        log.info("---testThreadPool---start--------------");
+        TimeUnit.SECONDS.sleep(5);
+        log.info("---testThreadPool---end--------------");
     }
 
 

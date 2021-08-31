@@ -1,7 +1,5 @@
 package com.dong.springcloud.comm.req;
 
-import lombok.Data;
-import lombok.ToString;
 
 import java.io.Serializable;
 
