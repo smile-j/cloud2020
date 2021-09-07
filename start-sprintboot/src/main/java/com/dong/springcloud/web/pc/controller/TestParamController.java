@@ -1,9 +1,12 @@
 package com.dong.springcloud.web.pc.controller;
 
+import com.dong.springcloud.entity.Person;
 import com.google.common.collect.ImmutableMap;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.checkerframework.checker.units.qual.A;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -23,6 +26,14 @@ import java.util.Map;
 @RequestMapping("/testParam")
 @Api(value = "TestParamController接口", tags = "TestParamController接口")
 public class TestParamController {
+
+    @Autowired
+    private Person person;
+
+    @GetMapping("getPersonInfo")
+    public Object getPersonInfo(){
+        return person;
+    }
 
     @ApiOperation("test--")
     @GetMapping("/test")

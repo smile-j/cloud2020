@@ -1,7 +1,10 @@
 package com.dong.springcloud.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.checkerframework.checker.units.qual.A;
 
 import java.util.Date;
 
@@ -14,6 +17,8 @@ import java.util.Date;
 @Data
 //@Accessors(chain = true)
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class LogInfo {
 
     private String type;

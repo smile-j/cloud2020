@@ -1,0 +1,42 @@
+mycar:
+  brand: BYD
+  price: 10000
+
+mycar1: {brand:wulinghongguang,price:1500}
+#data boolean string number null
+
+#数组
+#ages: [1,2,3,4,5]
+ages:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+person:
+  userName: lili
+  boss: true
+  birth: 2019/12/9
+  age: 22
+#  interests: [篮球,足球]
+  interests:
+    - 篮球
+    - 足球
+    - 11
+  animal: [cat,dog]
+#  score:
+#    english: 80
+#    math: 90
+  score: {english: 80,math: 90}
+  salarys:
+    - 99999.98
+    - 8889.98
+  pet:
+    name: 阿狗
+    weight: 22.2
+  allPets:
+    sick:
+      - {name: aa,weight: 20.2}
+      - name: 阿花
+        weight: 23.33
+    health: [{name: lala,weight: 87.31},{name: af,weight: 35.66}]

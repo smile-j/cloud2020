@@ -10,6 +10,9 @@ spring:
     password: root
   profiles:
     active: dev
+#  banner:
+#    image:
+#      location: aa.jpg
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.dong.springcloud.entity
@@ -25,3 +28,6 @@ pagehelper:
   params: count=countSql
   offset-as-page-num: true
   row-bounds-with-count: true
+#查看哪些配置启用
+#debug: true
+

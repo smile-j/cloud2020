@@ -24,18 +24,40 @@ public class AsyncTaskService {
     private UserDao userDao;
 
     @SneakyThrows
-    @Async
+    @Async("lazyTraceExecutor")
     public void testAsyn(UserEntity userEntity) {
-        log.info("------222222--------------");
+        log.info("------222222--------------，{},{}",Thread.currentThread().getId(),Thread.currentThread().getName());
         TimeUnit.SECONDS.sleep(5);
         log.info("-----------3333---------");
         userDao.insert(userEntity);
     }
     @Async
     public void testThreadPool() throws InterruptedException {
-        log.info("---testThreadPool---start--------------");
+        log.info("---testThreadPool---start--------------，{},{}",Thread.currentThread().getId(),Thread.currentThread().getName());
         TimeUnit.SECONDS.sleep(5);
         log.info("---testThreadPool---end--------------");
+    }
+
+    @Async("multiGuaranteeExecutor")
+    public void one() throws Exception {
+        log.info("---one--{},{}",Thread.currentThread().getId(),Thread.currentThread().getName());
+        TimeUnit.SECONDS.sleep(2);
+        log.info("one success");
+    }
+
+    @Async("multiGuaranteeExecutor")
+    public void two() throws Exception {
+        log.info("--two--{},{}",Thread.currentThread().getId(),Thread.currentThread().getName());
+        TimeUnit.SECONDS.sleep(2);
+        log.info("two success");
+    }
+
+    @Async("simpleExecutor")
+    public void three(String str) throws Exception {
+        log.info("--three--param--,{}",str);
+        log.info("--three--{},{}",Thread.currentThread().getId(),Thread.currentThread().getName());
+        TimeUnit.SECONDS.sleep(2);
+        log.info("three success");
     }
 
 
