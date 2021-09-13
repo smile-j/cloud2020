@@ -117,12 +117,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-configuration-processor</artifactId>
-                    </execution>
-                </executions>
+                <configuration>
+                    <excludes>
+                        <execution>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                        </execution>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
