@@ -36,9 +36,9 @@ public class BootMain {
 
         //2.查看所有的bean组件
         String[] beanDefinitionNames = run.getBeanDefinitionNames();
-        for (String name:beanDefinitionNames){
+       /* for (String name:beanDefinitionNames){
             log.info("------>>,{}",name);
-        }
+        }*/
        /* Pet pet01 = run.getBean("pet01", Pet.class);
         Pet pet02 = run.getBean( Pet.class);
         BeanConfig bean = run.getBean(BeanConfig.class);

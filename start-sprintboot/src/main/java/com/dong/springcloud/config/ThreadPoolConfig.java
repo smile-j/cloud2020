@@ -80,7 +80,7 @@ public class ThreadPoolConfig {
     /**
      * Customize rejected handler
      */
-    private class CustomRejectedExecutionHandler implements RejectedExecutionHandler {
+    private static class CustomRejectedExecutionHandler implements RejectedExecutionHandler {
 
         @Override
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
@@ -116,4 +116,13 @@ public class ThreadPoolConfig {
 
     }
 
+
+    public static void main(String[] args) {
+
+        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(3,3,3,TimeUnit.SECONDS,new LinkedBlockingQueue<>(10),new CustomRejectedExecutionHandler());
+        for (int i=0;i<1000;i++){
+            poolExecutor.execute(new TestRunnable("i--"+i));
+        }
+
+    }
 }

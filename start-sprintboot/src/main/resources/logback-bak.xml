@@ -6,7 +6,7 @@
     <!-- 非生产环境环境. -->
     <springProfile name="dev">
         <logger name="com.dong.springcloud" level="DEBUG"/>
-        <root level="ERROR">
+        <root level="DEBUG">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="FILE"/>
             <appender-ref ref="ERROR"/>
@@ -15,7 +15,7 @@
     </springProfile>
     <springProfile name="uat">
         <logger name="com.dong.springcloud" level="DEBUG"/>
-        <root level="ERROR">
+        <root level="DEBUG">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="FILE"/>
             <appender-ref ref="ERROR"/>
@@ -25,7 +25,7 @@
     <!-- 生产环境. -->
     <springProfile name="prod">
         <logger name="com.dong.springcloud" level="DEBUG"/>
-        <root level="ERROR">
+        <root level="DEBUG">
             <appender-ref ref="FILE"/>
             <appender-ref ref="ERROR"/>
             <appender-ref ref="ALIYUN"/>

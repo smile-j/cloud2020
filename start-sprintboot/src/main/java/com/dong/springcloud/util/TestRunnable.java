@@ -13,7 +13,7 @@ public class TestRunnable implements Runnable{
     }
     @Override
     public void run() {
-
+        System.out.println(bizMessage+"--SUCCESS!");
     }
 
     public String getBizMessage() {
