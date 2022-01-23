@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.dong.springcloud.dao.LogDao">
+
+    <resultMap id="baseMap" type="com.dong.springcloud.entity.LogEntity">
+        <id column="id" property="id" />
+        <result column="content" property="content"/>
+        <result column="create_time" property="createTime"/>
+        <result column="type" property="type"/>
+    </resultMap>
+
+    <sql id="baseColumns">
+        id,content,create_time,type
+    </sql>
+    <insert id="insertOne" keyProperty="id" useGeneratedKeys="true">
+        insert into test_log(content,create_time,type)
+        values (#{content},#{createTime},#{type})
+    </insert>
+
+    <select id="selectById" resultMap="baseMap">
+        select <include refid="baseColumns"/> from test_log
+        where id = #{id} limit 1
+    </select>
+    <select id="selectList"  resultMap="baseMap">
+        select <include refid="baseColumns"/> from test_log
+        <where>
+            <if test="id!=null">
+                and id = #{id}
+            </if>
+            <if test=" content!=null and  content!=''">
+                and content = #{content}
+            </if>
+            <if test="type!=null">
+                and type = #{type}
+            </if>
+        </where>
+    </select>
+</mapper>

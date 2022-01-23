@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.dong.springcloud.dao.DeptDao">
+
+    <resultMap id="baseMap" type="com.dong.springcloud.entity.DeptEntity">
+        <id column="id" property="id" />
+        <result column="dept_name" property="deptName"/>
+        <result column="dept_no" property="deptNo"/>
+        <result column="remarks" property="remarks"/>
+    </resultMap>
+
+    <sql id="baseColumns">
+        id,dept_name,dept_no,remarks
+    </sql>
+    <insert id="insertOne" keyProperty="id" useGeneratedKeys="true">
+        insert into test_dept(dept_name,dept_no,remarks)
+        values (#{deptName},#{deptNo},#{remarks})
+    </insert>
+
+    <select id="selectById" resultMap="baseMap">
+        select <include refid="baseColumns"/> from test_dept
+        where id = #{id} limit 1
+    </select>
+    <select id="selectList"  resultMap="baseMap">
+        select <include refid="baseColumns"/> from test_dept
+        <where>
+            <if test="id!=null">
+                and id = #{id}
+            </if>
+            <if test=" deptNo!=null and  deptNo!=''">
+                and dept_no = #{deptNo}
+            </if>
+            <if test="deptName!=null and deptName!=''">
+                and dept_name = #{deptName}
+            </if>
+            <if test="remarks!=null and remarks!=''">
+                and remarks = #{remarks}
+            </if>
+        </where>
+    </select>
+</mapper>
